@@ -956,7 +956,7 @@ internal class CodeGeneratorVisitor(val context: Context) : IrElementVisitorVoid
                     genCatchBlock()
                     return      // Remaining catch clauses are unreachable.
                 } else {
-                    val isInstance = genInstanceOf(exception, catch.parameter.type, catch)
+                    val isInstance = genInstanceOf(exception, catch.parameter.type)
                     val body = codegen.basicBlock("catch", catch.startLocation)
                     val nextCheck = codegen.basicBlock("catchCheck", catch.startLocation)
                     codegen.condBr(isInstance, body, nextCheck)
